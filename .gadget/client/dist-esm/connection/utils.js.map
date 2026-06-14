@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/connection/utils.ts"],
+  "sourcesContent": ["import { Call, type FieldSelection } from \"tiny-graphql-query-compiler\";\n\n/**\n * Build a selection object to retrieve the hydrations for a model from the `gadgetMeta` API\n **/\nexport const hydrationSelection = (modelApiIdentifier: string, namespace?: string | string[] | null): FieldSelection => {\n  const fullyQualifiedIdentifier = namespace\n    ? [...(Array.isArray(namespace) ? namespace : [namespace]), modelApiIdentifier].join(\".\")\n    : modelApiIdentifier;\n\n  return {\n    gadgetMeta: {\n      hydrations: Call({ modelName: fullyQualifiedIdentifier }),\n    },\n  };\n};\n\nexport type BuildOperationResult = {\n  query: string;\n  variables: Record<string, any>;\n};\n"],
+  "mappings": "AAAA,SAAS,YAAiC;AAKnC,MAAM,qBAAqB,CAAC,oBAA4B,cAAyD;AACtH,QAAM,2BAA2B,YAC7B,CAAC,GAAI,MAAM,QAAQ,SAAS,IAAI,YAAY,CAAC,SAAS,GAAI,kBAAkB,EAAE,KAAK,GAAG,IACtF;AAEJ,SAAO;AAAA,IACL,YAAY;AAAA,MACV,YAAY,KAAK,EAAE,WAAW,yBAAyB,CAAC;AAAA,IAC1D;AAAA,EACF;AACF;",
+  "names": []
+}

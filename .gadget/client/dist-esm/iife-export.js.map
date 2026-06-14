@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/iife-export.ts"],
+  "sourcesContent": ["import { SkoopiarClient } from \".\";\n\ndeclare global {\n  interface Window {\n    /**\n     * The Gadget client constructor\n     *\n     * @example\n     * ```ts\n     * const api = new SkoopiarClient();\n     * ```\n     */\n    SkoopiarClient: typeof SkoopiarClient;\n\n    /**\n     * The Gadget client for SkoopiarClient\n     * @deprecated Use window.SkoopiarClient instead\n     */\n    Gadget: typeof SkoopiarClient;\n  }\n}\n\n// add the client to the window\nwindow.SkoopiarClient = SkoopiarClient;\n\nconst previousValue: any = window.Gadget;\n\n// add the client to the window at the old .Gadget property for backwards compatibility -- the SkoopiarClient property should be preferred instead\nwindow.Gadget = SkoopiarClient;\n(window.Gadget as any).previousValue = previousValue;\n"],
+  "mappings": "AAAA,SAAS,sBAAsB;AAuB/B,OAAO,iBAAiB;AAExB,MAAM,gBAAqB,OAAO;AAGlC,OAAO,SAAS;AACf,OAAO,OAAe,gBAAgB;",
+  "names": []
+}

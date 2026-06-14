@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/connection/graphql-live-query-utils/index.ts"],
+  "sourcesContent": ["import type { Delta } from \"@n1ru4l/json-patch-plus\";\nimport { patch } from \"@n1ru4l/json-patch-plus\";\nimport type { Repeater } from \"../repeater/index.js\";\nimport { createApplyLiveQueryPatch } from \"./createApplyLiveQueryPatch.js\";\n\nexport type ApplyPatchFunction<PatchPayload = unknown> = (\n  previous: Record<string, unknown>,\n  patch: PatchPayload\n) => Record<string, unknown>;\n\nexport const applyJSONDiffPatch: ApplyPatchFunction<Delta> = (left, delta): Record<string, unknown> =>\n  patch({\n    left,\n    delta,\n  });\n\nexport const applyLiveQueryJSONDiffPatch: <TExecutionResult = Record<string, unknown>>(\n  source: AsyncIterable<TExecutionResult>\n) => Repeater<TExecutionResult> = createApplyLiveQueryPatch(applyJSONDiffPatch);\nexport { applyAsyncIterableIteratorToSink, makeAsyncIterableIteratorFromSink } from \"@n1ru4l/push-pull-async-iterable-iterator\";\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AACA,6BAAsB;AAEtB,uCAA0C;AAgB1C,+CAAoF;AAT7E,MAAM,qBAAgD,CAAC,MAAM,cAClE,8BAAM;AAAA,EACJ;AAAA,EACA;AACF,CAAC;AAEI,MAAM,kCAEqB,4DAA0B,kBAAkB;",
+  "names": []
+}

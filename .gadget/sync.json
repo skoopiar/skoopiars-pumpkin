@@ -1,0 +1,9 @@
+{
+  "application": "skoopiar",
+  "environment": "development",
+  "environments": {
+    "development": {
+      "filesVersion": "1905"
+    }
+  }
+}

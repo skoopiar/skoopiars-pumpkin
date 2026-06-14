@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/connection/InMemoryStorage.ts"],
+  "sourcesContent": ["export interface BrowserStorage {\n  getItem(key: string): string | null;\n  setItem(key: string, value: string): void;\n}\n\n/**\n * Implements part of the `window.localStorage` api, but in memory such that the stored values are lost as soon as the JS VM's life ends\n **/\nexport class InMemoryStorage implements BrowserStorage {\n  values: Record<string, string> = {};\n\n  getItem(key: string): string | null {\n    return this.values[key] || null;\n  }\n\n  setItem(key: string, value: string): void {\n    this.values[key] = value;\n  }\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAQO,MAAM,gBAA0C;AAAA,EAAhD;AACL,kBAAiC,CAAC;AAAA;AAAA,EAElC,QAAQ,KAA4B;AAClC,WAAO,KAAK,OAAO,GAAG,KAAK;AAAA,EAC7B;AAAA,EAEA,QAAQ,KAAa,OAAqB;AACxC,SAAK,OAAO,GAAG,IAAI;AAAA,EACrB;AACF;",
+  "names": []
+}
